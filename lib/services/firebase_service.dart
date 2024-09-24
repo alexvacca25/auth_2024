@@ -12,12 +12,12 @@ class FirebaseService {
         email: email,
         password: password,
       );
-
+      print(userCredential);
       User? user = userCredential.user;
 
       // Si el usuario se crea correctamente, guarda los datos en Firestore
       if (user != null) {
-        await _firestore.collection('users').doc(user.uid).set({
+        await _firestore.collection('usuarios').doc(user.uid).set({
           'name': name,
           'email': email,
           'createdAt': FieldValue.serverTimestamp(),

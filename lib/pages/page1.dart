@@ -109,7 +109,7 @@ class Page1 extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             item.detail,
-                            style: TextStyle(
+                            style:TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                             ),
