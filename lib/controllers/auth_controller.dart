@@ -8,7 +8,8 @@ import '../services/firebase_service.dart';
 class AuthController extends GetxController {
   final FirebaseService _firebaseService = FirebaseService();
   var isLoading = false.obs; // Observa si se está cargando una operación
-  var user = Rxn<User>(); // Observa el estado del usuario
+  Rxn<User> user = Rxn<User>();
+
   final storage =
       GetStorage(); // Crear una instancia de GetStorage para almacenar las credenciales
 
@@ -88,4 +89,6 @@ class AuthController extends GetxController {
     storage.remove('email');
     storage.remove('password');
   }
+
+  User? get userlogueado => user.value;
 }

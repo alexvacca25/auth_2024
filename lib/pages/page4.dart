@@ -1,4 +1,7 @@
+import 'package:auth_2024/controllers/auth_controller.dart';
+import 'package:auth_2024/controllers/profile_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class Page4 extends StatelessWidget {
@@ -7,7 +10,8 @@ class Page4 extends StatelessWidget {
   final TextEditingController _whatsappController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   DateTime? _selectedBirthDate;
-
+  final ProfileController _profilecontroller = Get.find();
+  final AuthController _authController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +27,8 @@ class Page4 extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 50,
-                  backgroundImage: AssetImage(
-                      'assets/profile_placeholder.png'), // Puedes cambiar esto por la imagen real del usuario
+                  backgroundImage: NetworkImage(
+                      ''), // Puedes cambiar esto por la imagen real del usuario
                 ),
                 Positioned(
                   bottom: 0,
@@ -108,10 +112,17 @@ class Page4 extends StatelessWidget {
             // Botón para guardar cambios
             ElevatedButton(
               onPressed: () {
-                // Lógica para guardar los cambios
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Datos guardados exitosamente')),
-                );
+                print('*********************************');
+                final String idProfile =
+                    _authController.userlogueado!.uid.toString();
+                print(idProfile);
+                _profilecontroller.saveProfile(
+                    idProfile,
+                    _nameController.text,
+                    _emailController.text,
+                    _whatsappController.text,
+                    _phoneController.text,
+                    DateTime.now());
               },
               child: Text('Guardar cambios'),
             ),

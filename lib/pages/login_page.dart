@@ -1,3 +1,4 @@
+import 'package:auth_2024/controllers/profile_controller.dart';
 import 'package:auth_2024/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,6 +7,7 @@ import '../controllers/auth_controller.dart';
 class LoginPage extends StatelessWidget {
   final AuthController _authController =
       Get.put(AuthController()); // Obtener el controlador
+  final ProfileController _profileController = Get.put(ProfileController());
   final TextEditingController _emailController =
       TextEditingController(); // Controlador para el email
   final TextEditingController _passwordController =
